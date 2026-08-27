@@ -14,6 +14,8 @@ try:
         Event,
         GroupAtMessageCreateEvent,
         GuildMessageEvent,
+        InteractionCreateEvent,
+        GroupMessageCreateEvent
     )
 
     @register_user_info_getter(Bot, Event)
@@ -49,7 +51,7 @@ try:
                 )
 
             if isinstance(
-                self.event, (C2CMessageCreateEvent, GroupAtMessageCreateEvent)
+                self.event, (C2CMessageCreateEvent, GroupAtMessageCreateEvent, GroupMessageCreateEvent, InteractionCreateEvent)
             ):
                 return UserInfo(
                     user_id=user_id,
