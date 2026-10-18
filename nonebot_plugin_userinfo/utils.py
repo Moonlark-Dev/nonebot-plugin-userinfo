@@ -1,14 +1,26 @@
 import asyncio
 import re
+import ssl
 
 import httpx
 from nonebot.log import logger
 
+from .config import plugin_config
 from .exception import NetworkError
 
 
+def _tls12_context() -> ssl.SSLContext:
+    context = ssl.create_default_context()
+    context.minimum_version = ssl.TLSVersion.TLSv1_2
+    context.maximum_version = ssl.TLSVersion.TLSv1_2
+    return context
+
+
 async def download_url(url: str) -> bytes:
-    async with httpx.AsyncClient() as client:
+    kwargs = {}
+    if plugin_config.userinfo_force_tls12:
+        kwargs["verify"] = _tls12_context()
+    async with httpx.AsyncClient(**kwargs) as client:
         for i in range(3):
             try:
                 resp = await client.get(url, timeout=10)

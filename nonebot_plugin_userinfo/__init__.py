@@ -1,6 +1,8 @@
 from nonebot.plugin import PluginMetadata
 
 from . import adapters as adapters
+from .config import Config as Config
+from .config import plugin_config as plugin_config
 from .getter import BotUserInfo as BotUserInfo
 from .getter import EventUserInfo as EventUserInfo
 from .getter import get_user_info as get_user_info
@@ -27,4 +29,5 @@ __plugin_meta__ = PluginMetadata(
         "~satori",
         "~qq",
     },
+    config=Config,
 )
