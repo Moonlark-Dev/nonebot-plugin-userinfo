@@ -225,8 +225,9 @@ async def test_group_message_event(app: App):
         # 旧版没有该接口时只能回退到 openid 头像。
         other_user_id = "1234"
         if (
-            hasattr(Bot, "get_group_member")
-            and "group_id" in GROUP_MESSAGE_EVENT_FIELDS
+            GroupMemberInfo is not None
+            and hasattr(Bot, "get_group_member")
+            and "group_openid" in GROUP_MESSAGE_EVENT_FIELDS
         ):
             member_info = _fake_group_member_info(
                 other_user_id, username="OtherUser", member_role="admin"
