@@ -19,3 +19,4 @@ class UserInfo(BaseModel):
     user_remark: Optional[str] = None
     user_avatar: Optional[ImageSource] = None
     user_gender: str = UserGender.unknown
+    user_role: Optional[str] = None

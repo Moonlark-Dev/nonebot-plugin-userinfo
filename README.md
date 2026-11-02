@@ -31,6 +31,7 @@ _✨ [Nonebot2](https://github.com/nonebot/nonebot2) 用户信息获取插件 �
 | user_remark      | `Optional[str]`         | 用户备注 | `None`      |                                                                                                                                                                                      |
 | user_avatar      | `Optional[ImageSource]` | 用户头像 | `None`      | [ImageSource](https://github.com/noneplugin/nonebot-plugin-userinfo/blob/main/nonebot_plugin_userinfo/image_source.py) 可通过 `get_url` 获取链接，通过 `get_image` 获取 `bytes` 结果 |
 | user_gender      | `str`                   | 用户性别 | `"unknown"` |                                                                                                                                                                                      |
+| user_role        | `Optional[str]`         | 群内角色 | `None`      | 目前仅 QQ 官方群的 `GROUP_MESSAGE_CREATE` 事件会提供，取值为 `member` / `admin` / `owner`                                                                                             |
 
 ### 安装
 
